@@ -1,4 +1,5 @@
 package com.crm.configuration;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,10 +13,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors();
+//        http.cors().disable();
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/**").fullyAuthenticated().and
-                ().httpBasic();
+//        http.authorizeRequests().antMatchers("/**").fullyAuthenticated().and
+//                ().httpBasic();
+             http.authorizeRequests().antMatchers("/**").permitAll();
     }
 
     @Override

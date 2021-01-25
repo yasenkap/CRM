@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
-
 public class ClientService {
 
     @Autowired
@@ -30,6 +30,25 @@ public class ClientService {
 
     public void saveClient(final Client client) {
         clientRepository.save(client);
+    }
+
+    public Client updateClient(Long id) {
+
+        Optional<Client> clientToUpdate = clientRepository.findById(id);
+        Client updatedClient = clientToUpdate.get();
+
+        if (clientToUpdate.isPresent()) {
+            updatedClient.setName(clientToUpdate.get().getName());
+            updatedClient.setCity(clientToUpdate.get().getCity());
+            updatedClient.setDescription(clientToUpdate.get().getDescription());
+            updatedClient.setWebsite(clientToUpdate.get().getWebsite());
+            updatedClient = clientRepository.save(updatedClient);
+        }
+        return updatedClient;
+    }
+
+    public List<Client> getClientByName(String name) {
+        return clientRepository.findByNameContaining(name);
     }
 
     public ClientService(ClientRepository clientRepository) {

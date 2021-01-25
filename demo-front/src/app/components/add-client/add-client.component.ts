@@ -37,7 +37,6 @@ export class AddClientComponent implements OnInit {
       response => {
         console.log(response);
         this.submitted = true;
-        alert("Client created successfully.");
       },
       error => {
         console.log(error);

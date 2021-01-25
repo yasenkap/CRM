@@ -20,7 +20,7 @@ public class Client {
     private String website;
     @Column(nullable = false)
     private String description;
-    @OneToMany
+    @OneToMany (mappedBy = "client")
     private Set<Contact> contacts;
 
     public Client() {
