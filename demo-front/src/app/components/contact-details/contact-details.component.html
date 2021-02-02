@@ -1,0 +1,93 @@
+<div class="form-style-5">
+    <div *ngIf="currentContact.id" >
+      <h4>Contact's Details</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentContact.name"
+            name="name"
+          />
+        </div>
+
+        <div>
+            <label for="surname">Surname</label>
+            <input
+              type="text"
+              class="form-control"
+              id="surname"
+              [(ngModel)]="currentContact.surname"
+              name="surname"
+            />
+          </div>
+
+          <div>
+            <label for="position">Position</label>
+            <input
+              type="text"
+              class="form-control"
+              id="position"
+              [(ngModel)]="currentContact.position"
+              name="position"
+            />
+          </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            [(ngModel)]="currentContact.email"
+            name="email"
+          />
+        </div>
+
+        <div>
+            <label for="phoneNumber">Phone number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phoneNumber"
+              [(ngModel)]="currentContact.phoneNumber"
+              name="phoneNumber"
+            />
+          </div>
+
+          <div>
+            <label for="client">Company</label>
+            <input
+              type="text"
+              class="form-control"
+              id="client"
+              [(ngModel)]="currentContact.client"
+              name="client"
+            />
+          </div>
+
+
+      </form>
+  
+      <button class="badge badge-danger mr-2" (click)="deleteContact()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateContact()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentContact.id">
+      <br />
+      <p>Cannot access this Client...</p>
+    </div>
+  </div>
+

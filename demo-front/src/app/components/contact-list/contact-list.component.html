@@ -1,0 +1,64 @@
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            
+            <input type="text" class="form-control" placeholder="Search by company's name" [(ngModel)]="companyName" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="searchClientName()">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <h4>Contacts List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let contact of contacts; let i = index"
+                [class.active]="i == currentIndex" (click)="setActiveContact(contact, i)">
+                {{ contact.name }} &nbsp; {{ contact.surname }} &nbsp;{{ contact.client }} 
+            </li>
+        </ul>
+
+    </div>
+<br>
+<br>
+    <div class="form-style-5">
+        <div *ngIf="currentContact">
+            <h4>Contact</h4>
+            <div>
+                <label><strong>Name:</strong></label>
+                {{ currentContact.name}} {{ currentContact.surname}}
+            </div>
+            <div>
+                <label><strong>Position:</strong></label>
+                {{ currentContact.position }}
+            </div>
+            <div>
+                <div>
+                    <label><strong>Email:</strong></label>
+                    {{ currentContact.email }}
+                </div>
+                <div>
+
+                    <label><strong>Phone Number:</strong></label>
+                    {{ currentContact.phoneNumber}}
+                </div>
+                <div>
+
+                    <label><strong>Company:</strong></label>
+                    {{ currentContact.client}}
+                </div>
+
+                <a routerLink="/contacts/{{ currentContact.id }}">
+                    Edit
+                </a>
+            </div>
+
+            <div *ngIf="!currentContact">
+                <br />
+                <p>Please click on a Contact...</p>
+            </div>
+        </div>
+    </div>
