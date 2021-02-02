@@ -1,6 +1,7 @@
 package com.crm.feature.client.model;
 
 import com.crm.feature.contact.model.Contact;
+import com.crm.feature.vacancy.model.Vacancy;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -20,13 +21,15 @@ public class Client {
     private String website;
     @Column(nullable = false)
     private String description;
-    @OneToMany (mappedBy = "client")
+    @OneToMany(mappedBy = "client")
     private Set<Contact> contacts;
+    @Column
+    @OneToMany(mappedBy = "client")
+    private Set<Vacancy> vacancies;
 
     public Client() {
 
     }
-
 
 
     public Long getId() {
@@ -69,6 +72,13 @@ public class Client {
         this.contacts = contacts;
     }
 
+    public Set<Vacancy> getVacancies() {
+        return vacancies;
+    }
+
+    public void setVacancies(Set<Vacancy> vacancies) {
+        this.vacancies = vacancies;
+    }
 
     public String getName() {
         return name;
@@ -78,14 +88,16 @@ public class Client {
         this.name = name;
     }
 
-    public Client(Long id, String name, City city, String website, String description, Set<Contact> contacts) {
+    public Client(Long id, String name, City city, String website, String description, Set<Contact> contacts, Set<Vacancy> vacancies) {
         this.id = id;
         this.name = name;
         this.city = city;
         this.website = website;
         this.description = description;
         this.contacts = contacts;
+        this.vacancies = vacancies;
     }
+
     public Client(Long id, String name, City city, String website, String description) {
         this.id = id;
         this.name = name;

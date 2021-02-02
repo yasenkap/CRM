@@ -7,3 +7,14 @@ export class Client {
         city?: string;
     
 }
+
+export enum City {
+        WARSAW,
+        CRACOW,
+        POZNAN,
+        KATOWICE,
+        GDYNYA,
+        GDANSK,
+        LODZ,
+        WROCLAW
+    }

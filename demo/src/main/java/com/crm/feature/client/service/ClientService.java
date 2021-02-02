@@ -32,16 +32,16 @@ public class ClientService {
         clientRepository.save(client);
     }
 
-    public Client updateClient(Long id) {
+    public Client updateClient(Long id, final Client client) {
 
         Optional<Client> clientToUpdate = clientRepository.findById(id);
         Client updatedClient = clientToUpdate.get();
 
         if (clientToUpdate.isPresent()) {
-            updatedClient.setName(clientToUpdate.get().getName());
-            updatedClient.setCity(clientToUpdate.get().getCity());
-            updatedClient.setDescription(clientToUpdate.get().getDescription());
-            updatedClient.setWebsite(clientToUpdate.get().getWebsite());
+            updatedClient.setName(client.getName());
+            updatedClient.setCity(client.getCity());
+            updatedClient.setDescription(client.getDescription());
+            updatedClient.setWebsite(client.getWebsite());
             updatedClient = clientRepository.save(updatedClient);
         }
         return updatedClient;

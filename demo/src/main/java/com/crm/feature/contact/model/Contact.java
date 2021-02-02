@@ -16,7 +16,8 @@ public class Contact {
     @Column(nullable = false)
     private String surname;
     @ManyToOne
-    @JoinColumn(name="client_id", nullable=false)
+    @JoinColumn(name="client_id")
+    //(nullable = false)
     private Client client;
     @Column(nullable = false, unique = true)
     @Email(message = "Invalid email")
@@ -92,6 +93,15 @@ public class Contact {
         this.name = name;
         this.surname = surname;
         this.client = client;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.position = position;
+    }
+
+    public Contact(Long id, String name, String surname, @Email(message = "Invalid email") String email, String phoneNumber, String position) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.position = position;
