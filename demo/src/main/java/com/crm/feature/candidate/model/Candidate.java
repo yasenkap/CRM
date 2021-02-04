@@ -31,7 +31,7 @@ public class Candidate {
     @Column
     private String description;
 
-    @Column
+    @Column(nullable = false)
     @ElementCollection
     private List<String> skillTags;
 

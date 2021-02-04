@@ -1,6 +1,8 @@
 package com.crm.feature.contact.controller;
 
 import com.crm.feature.contact.model.Contact;
+import com.crm.feature.contact.model.ContactDTO;
+import com.crm.feature.contact.model.ContactMapper;
 import com.crm.feature.contact.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +17,11 @@ public class ContactController {
 
     @Autowired
     private ContactService contactService;
+    @Autowired
+    private ContactMapper contactMapper;
 
     @GetMapping
-    List<Contact> getAll(@RequestParam(required = false) String clientName) {
+    List<ContactDTO> getAll(@RequestParam(required = false) String clientName) {
         List<Contact> contacts = new ArrayList<>();
 
         if (clientName == null) {
@@ -25,13 +29,13 @@ public class ContactController {
         } else {
             contactService.getContactByNameOfClient(clientName).forEach(contacts::add);
         }
-        return contacts;
+        return contactMapper.toContactDTOs(contacts);
     }
 
 
     @GetMapping("/{id}")
-    Contact getById(@PathVariable Long id) {
-        return contactService.getById(id);
+    ContactDTO getById(@PathVariable Long id) {
+        return contactMapper.toContactDTO(contactService.getById(id));
     }
 
     @DeleteMapping("/{id}")
@@ -47,5 +51,10 @@ public class ContactController {
     @PutMapping("/{id}")
     public Contact updateContact(@PathVariable("id") long id, @RequestBody final Contact contact) {
         return contactService.updateContact(id, contact);
+    }
+
+    public ContactController(ContactService contactService, ContactMapper contactMapper) {
+        this.contactService = contactService;
+        this.contactMapper = contactMapper;
     }
 }
