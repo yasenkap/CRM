@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Candidate } from '../models/candidate.model';
+import { Vacancy } from '../models/vacancy.model';
 
 const baseUrl = 'http://localhost:8080/candidates';
 const httpOptions = {
@@ -13,5 +15,34 @@ const httpOptions = {
 
 export class CandidateService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getAll(): Observable<Candidate[]> {
+    return this.http.get<Candidate[]>(baseUrl);
+  }
+
+  get(id: any): Observable<Candidate> {
+    return this.http.get(`${baseUrl}/${id}`);
+  }
+
+  create(data: any): Observable<any> {
+    return this.http.post(`${baseUrl}`, data);
+  }
+
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${baseUrl}/${id}`);
+  }
+
+  findBySurname(surname: any): Observable<Candidate[]> {
+    return this.http.get<Candidate[]>(`${baseUrl}?surname=${surname}`);
+  }
+
+  findVacanciesByCandidateId(id: any): Observable<Vacancy[]> {
+    return this.http.get<Vacancy[]>(`${baseUrl}/${id}/vacancies`);
+  }
+
 }

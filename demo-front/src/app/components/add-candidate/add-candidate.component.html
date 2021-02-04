@@ -1,1 +1,57 @@
-<p>add-candidate works!</p>
+<div class="form-style-5">
+    <div>
+        <div *ngIf="!submitted">
+            <legend><span class="number">1</span>Candidate Info</legend>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="candidate.name" name="name"
+                    placeholder="Yaroslava" />
+            </div>
+
+            <div>
+                <label for="name">Surname</label>
+                <input type="text" class="form-control" id="surname" required [(ngModel)]="candidate.surname"
+                    name="surname" placeholder="Pyrozhko" />
+            </div>
+
+            <div>
+                <label for="name">Phone Number</label>
+                <input type="text" class="form-control" id="phoneNumber" required [(ngModel)]="candidate.phoneNumber"
+                    name="phoneNumber" placeholder="+48 555 555 555" />
+            </div>
+
+
+            <div>
+                <label for="name">Email</label>
+                <input type="text" class="form-control" id="email" required [(ngModel)]="candidate.email" name="email"
+                    placeholder="yaroslava.pyrozhko@gmail.com" />
+            </div>
+
+            <div>
+                <label for="skillSet">Skill Set</label>
+                <input id="skillSet" class="form-control" type="text" required [(ngModel)]="candidate.skillSet"
+                    name="skillSet" placeholder="Java, Oracle, MySQL" />
+            </div>
+
+            <legend><span class="number">2</span> Additional Info</legend>
+
+            <div>
+                <input id="description" class="form-control" type="text" required [(ngModel)]="candidate.description"
+                    name="description" placeholder="Your comment or description of the candidate" />
+            </div>
+
+
+            <legend><span class="number">3</span> Add to the recruitment process</legend>
+
+            <button>Click to choose the vacancy</button>
+
+
+            <button type="submit" class="buttom" (click)="saveCandidate()">Submit</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h4>Candidate was submitted successfully!</h4>
+            <button type="submit" (click)="newCandidate()">Add</button>
+        </div>
+    </div>
+</div>
