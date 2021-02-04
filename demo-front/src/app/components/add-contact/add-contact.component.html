@@ -33,15 +33,13 @@
         </div>
   
         <legend><span class="number">2</span>Company</legend>
-        <div>
-          <label for="client">Company name</label>
-          <input id="client" class="form-control" type="text" required [(ngModel)]="contact.client"
-            name="client" placeholder="Harvey Nash Technology" />
-        </div>
 
+        <div>
+        <label for="client">Company name</label>
         <select [(ngModel)]="selectedName">
           <option *ngFor="let client of clients">{{client.name}}</option>
         </select>
+      </div>
   
         <button type="submit" class="buttom" (click)="saveContact()">Submit</button>
       </div>

@@ -39,6 +39,13 @@
         </div>
   
         <legend><span class="number">2</span>Additional information</legend>
+        
+        <div>
+          <label for="budgetType">Description/Comments</label>
+        <input id="description" class="form-control" type="text" required [(ngModel)]="vacancy.description"
+          name="description" placeholder="only developers with 3+ years of experience" />
+      </div>
+
         <div>
             <label for="budgetType">Contact on client's side</label>
           <input id="contact" class="form-control" type="text" required [(ngModel)]="vacancy.contact"
