@@ -1,8 +1,11 @@
 package com.crm.feature.client.controller;
 
 import com.crm.feature.client.model.Client;
+import com.crm.feature.client.model.ClientDTO;
+import com.crm.feature.client.model.ClientMapper;
 import com.crm.feature.client.service.ClientService;
 import com.crm.feature.contact.model.Contact;
+import com.crm.feature.contact.model.ContactMapper;
 import com.crm.feature.contact.service.ContactService;
 import com.crm.feature.vacancy.model.Vacancy;
 import com.crm.feature.vacancy.service.VacancyService;
@@ -23,10 +26,12 @@ public class ClientController {
     private VacancyService vacancyService;
     @Autowired
     private ContactService contactService;
+    @Autowired
+    private ClientMapper clientMapper;
 
     @CrossOrigin(origins = "http://localhost:8081")
     @GetMapping
-    List<Client> getAll(@RequestParam(required = false) String name) {
+    List<ClientDTO> getAll(@RequestParam(required = false) String name) {
         List<Client> clients = new ArrayList<Client>();
 
         if (name == null) {
@@ -35,7 +40,7 @@ public class ClientController {
             clientService.getClientByName(name).forEach(clients::add);
         }
 
-        return clients;
+        return clientMapper.toClientDTOs(clients);
     }
 
     @GetMapping("/{id}/vacancies")
@@ -49,15 +54,15 @@ public class ClientController {
     @GetMapping("/{id}/contacts")
     List<Contact> getContactsByClient(@PathVariable("id") Long id) {
         Client selectedClient = clientService.getById(id);
-        List<Contact> contacts= new ArrayList<>();
+        List<Contact> contacts = new ArrayList<>();
         contactService.getContactByNameOfClient(selectedClient.getName()).forEach(contacts::add);
         return contacts;
     }
 
 
     @GetMapping("/{id}")
-    Client getById(@PathVariable Long id) {
-        return clientService.getById(id);
+    ClientDTO getById(@PathVariable Long id) {
+        return clientMapper.toClientDTO(clientService.getById(id));
     }
 
     @DeleteMapping("/{id}")
@@ -75,9 +80,10 @@ public class ClientController {
         return clientService.updateClient(id, client);
     }
 
-    public ClientController(ClientService clientService, VacancyService vacancyService, ContactService contactService) {
+    public ClientController(ClientService clientService, VacancyService vacancyService, ContactService contactService, ClientMapper clientMapper) {
         this.clientService = clientService;
         this.vacancyService = vacancyService;
         this.contactService = contactService;
+        this.clientMapper = clientMapper;
     }
 }
