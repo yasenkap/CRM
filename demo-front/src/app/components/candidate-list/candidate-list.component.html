@@ -1,1 +1,64 @@
-<p>candidate-list works!</p>
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by surname of the candidate"
+                [(ngModel)]="surname" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="searchSurname()">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <h4>Candidates List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let candidate of candidates; let i = index"
+                [class.active]="i == currentIndex" (click)="setActiveCandidate(candidate, i)">
+                {{ candidate.name }} {{ candidate.surname }}
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="form-style-5">
+        <div *ngIf="currentCandidate">
+            <h4>Candidate</h4>
+            <div>
+                <label><strong>Name:</strong></label>
+                {{ currentCandidate.name}} {{ currentCandidate.surname}}
+            </div>
+            <div>
+                <label><strong>Phone number:</strong></label>
+                {{ currentCandidate.phoneNumber }}
+            </div>
+
+            <div>
+                <label><strong>Email:</strong></label>
+                {{ currentCandidate.email }}
+            </div>
+            <div>
+
+                <div>
+                    <label><strong>Skill set:</strong></label>
+                    {{ currentCandidate.skillTags }}
+                </div>
+                <div>
+
+                    <label><strong>Description/Comments:</strong></label>
+                    {{ currentCandidate.description }}
+                </div>
+
+                <a class="form-style-5" routerLink="/candidates/{{ currentCandidate.id }}">
+                    Edit
+                </a>
+            </div>
+
+            <div *ngIf="!currentCandidate">
+                <br />
+                <p>Please click on a Candidate..</p>
+            </div>
+
+        </div>

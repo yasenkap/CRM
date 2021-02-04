@@ -15,7 +15,7 @@ export class AddCandidateComponent implements OnInit {
     surname: '',
     phoneNumber: '',
     email: '',
-    skillSet: '',
+    skillTags: '',
     description: '',
     vacancies: []
   };
@@ -34,7 +34,7 @@ export class AddCandidateComponent implements OnInit {
       surname: this.candidate.surname,
       phoneNumber: this.candidate.phoneNumber,
       email: this.candidate.email,
-      skillSet: this.candidate.skillSet,
+      skillTags: this.candidate.skillTags,
       description: this.candidate.description,
       vacancies: this.candidate.vacancies
     };
@@ -56,7 +56,7 @@ export class AddCandidateComponent implements OnInit {
       surname: '',
       phoneNumber: '',
       email: '',
-      skillSet: '',
+      skillTags: '',
       description: '',
       vacancies: []
     };

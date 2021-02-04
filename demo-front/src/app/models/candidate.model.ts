@@ -6,7 +6,7 @@ export class Candidate {
     surname?: string;
     phoneNumber?: string;
     email?: string;
-    skillSet?: string;
+    skillTags?: string;
     description?: string;
     vacancies?: Vacancy[];
 }
