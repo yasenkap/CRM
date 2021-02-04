@@ -28,8 +28,8 @@ export class VacancyService {
       return this.http.post(`${baseUrl}`, { ...data, skillTags: data.skillTags?.split(', ')});
     }
   
-    update(id: any, data: any): Observable<any> {
-      return this.http.put(`${baseUrl}/${id}`, data);
+    update(id: any, data: Vacancy): Observable<any> {
+      return this.http.put(`${baseUrl}/${id}`, { ...data, skillTags: data.skillTags?.split(', ')});
     }
   
     delete(id: any): Observable<any> {
