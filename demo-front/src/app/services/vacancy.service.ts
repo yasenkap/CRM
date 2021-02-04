@@ -36,8 +36,8 @@ export class VacancyService {
       return this.http.delete(`${baseUrl}/${id}`);
     }
 
-    findByClientName(name: any): Observable<Vacancy[]> {
-      return this.http.get<Vacancy[]>(`${baseUrl}?name=${name}`);
+    findByClientName(clientName: any): Observable<Vacancy[]> {
+      return this.http.get<Vacancy[]>(`${baseUrl}?clientName=${clientName}`);
     }
 
     getCandidatesByVacancyId(id: any): Observable<Candidate[]> {

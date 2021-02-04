@@ -13,7 +13,7 @@ export class Vacancy {
     client?: Client;
     status?: Status;
     skillTags?: string;
-//should be set
+    
 }
 
 export enum Currency {

@@ -17,7 +17,7 @@
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let contact of contacts; let i = index"
                 [class.active]="i == currentIndex" (click)="setActiveContact(contact, i)">
-                {{ contact.name }} &nbsp; {{ contact.surname }} &nbsp;{{ contact.client }} 
+                {{ contact.name }} &nbsp; {{ contact.surname }} &nbsp;
             </li>
         </ul>
 
@@ -48,7 +48,7 @@
                 <div>
 
                     <label><strong>Company:</strong></label>
-                    {{ currentContact.client}}
+                    {{ currentContact?.client?.name}}
                 </div>
 
                 <a routerLink="/contacts/{{ currentContact.id }}">

@@ -1,1 +1,65 @@
-<p>vacancy-list works!</p>
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by company name" [(ngModel)]="clientName" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="searchName()">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <h4>Vacancies List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let vacancy of vacancies; let i = index"
+                [class.active]="i == currentIndex" (click)="setActiveVacancy(vacancy, i)">
+                {{ vacancy.title }} {{ vacancy?.client?.name }}
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="form-style-5">
+        <div *ngIf="currentVacancy">
+            <div>
+            <h4>Vacancy</h4>
+            <div>
+                <label><strong>Title:</strong></label> {{ currentVacancy.title}}
+            </div>
+            <div>
+                <label><strong>Budget:</strong></label>
+                {{ currentVacancy.budget }} {{ currentVacancy.currency }} {{ currentVacancy.budgetType }} {{
+                currentVacancy.contractType }}
+            </div>
+            
+                
+                <div>
+
+                    <label><strong>Description:</strong></label>
+                    {{ currentVacancy.description }}
+                </div>
+
+                <div>
+                    <label><strong>Skills:</strong></label>
+                    {{ currentVacancy.skillTags}}
+                </div>
+
+                <div>
+                    <label><strong>Contact person:</strong></label>
+                    {{ currentVacancy.contact}}
+                </div>
+
+                <a class="form-style-5" routerLink="/vacancies/{{ currentVacancy.id }}">
+                    Edit
+                </a>
+            </div>
+
+            <div *ngIf="!currentVacancy">
+                <br />
+                <p>Please click on a Vacancy...</p>
+            </div>
+        </div>
+    </div>
