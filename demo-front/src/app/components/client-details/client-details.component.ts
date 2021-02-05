@@ -14,7 +14,7 @@ export class ClientDetailsComponent implements OnInit {
     name: '',
     description: '',
     website: '',
-    city: ''
+    city: undefined
   };
 
   message = '';
