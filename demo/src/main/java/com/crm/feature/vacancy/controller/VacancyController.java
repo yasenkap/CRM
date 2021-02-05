@@ -4,6 +4,8 @@ import com.crm.feature.candidate.model.Candidate;
 import com.crm.feature.candidate.service.CandidateService;
 import com.crm.feature.contact.model.Contact;
 import com.crm.feature.vacancy.model.Vacancy;
+import com.crm.feature.vacancy.model.VacancyDTO;
+import com.crm.feature.vacancy.model.VacancyMapper;
 import com.crm.feature.vacancy.service.VacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,29 +22,31 @@ public class VacancyController {
     private VacancyService vacancyService;
     @Autowired
     private CandidateService candidateService;
+    @Autowired
+    private VacancyMapper vacancyMapper;
 
     @GetMapping
-    List<Vacancy> getAll(@RequestParam(required = false) String clientName) {
-        List<Vacancy> vacancies= new ArrayList<>();
+    List<VacancyDTO> getAll(@RequestParam(required = false) String clientName) {
+        List<Vacancy> vacancies = new ArrayList<>();
 
         if (clientName == null) {
             vacancyService.getAll().forEach(vacancies::add);
         } else {
             vacancyService.getVacanciesByNameOfClient(clientName).forEach(vacancies::add);
         }
-        return vacancies;
+        return vacancyMapper.toVacancyDTOs(vacancies);
     }
 
     @GetMapping("/{id}/candidates")
     List<Candidate> getCandidatesByVacancyId(@PathVariable Long id) {
         List<Candidate> candidates = new ArrayList<>();
-            candidateService.getCandidatesByVacancyId(id).forEach(candidates::add);
+        candidateService.getCandidatesByVacancyId(id).forEach(candidates::add);
         return candidates;
     }
 
     @GetMapping("/{id}")
-    Vacancy getById(@PathVariable Long id) {
-        return vacancyService.getById(id);
+    VacancyDTO getById(@PathVariable Long id) {
+        return vacancyMapper.toVacancyDTO(vacancyService.getById(id));
     }
 
     @DeleteMapping("/{id}")
@@ -68,8 +72,9 @@ public class VacancyController {
         return candidateService;
     }
 
-    public VacancyController(VacancyService vacancyService, CandidateService candidateService) {
+    public VacancyController(VacancyService vacancyService, CandidateService candidateService, VacancyMapper vacancyMapper) {
         this.vacancyService = vacancyService;
         this.candidateService = candidateService;
+        this.vacancyMapper = vacancyMapper;
     }
 }

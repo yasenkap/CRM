@@ -35,8 +35,8 @@ export class ContactService {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 
-  findByClientName(name: any): Observable<Contact[]> {
-    return this.http.get<Contact[]>(`${baseUrl}?name=${name}`);
+  findByClientName(clientName: any): Observable<Contact[]> {
+    return this.http.get<Contact[]>(`${baseUrl}?clientName=${clientName}`);
   }
 
 }

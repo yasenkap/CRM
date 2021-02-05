@@ -13,7 +13,7 @@ export class ContactListComponent implements OnInit {
   contacts?: Contact[];
   currentContact?: Contact;
   currentIndex = -1;
-  companyName = '';
+  clientName = '';
 
   constructor(private router: Router, private contactService: ContactService) { }
 
@@ -45,7 +45,7 @@ export class ContactListComponent implements OnInit {
 
   ///check if works
   searchClientName(): void {
-    this.contactService.findByClientName(this.currentContact?.client?.name).subscribe(
+    this.contactService.findByClientName(this.clientName).subscribe(
       data => {
         this.contacts = data;
         console.log(data);

@@ -2,15 +2,14 @@ package com.crm.feature.contact.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
-/*
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-02-05T00:54:10+0100",
+    date = "2021-02-05T01:33:58+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.9 (Oracle Corporation)"
 )
-*/
 @Component
 public class ContactMapperImpl implements ContactMapper {
 
