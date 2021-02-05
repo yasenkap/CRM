@@ -1,65 +1,77 @@
 <div class="form-style-5">
-    <div>
-      <div *ngIf="!submitted">
-        <legend><span class="number">1</span>Vacancy Info</legend>
-        <div>
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" required [(ngModel)]="vacancy.title" name="title"
-            placeholder="Java Developer" />
-        </div>
-  
-        <div>
-          <label for="budget">Maximum budget</label>
-          <input id="budget" class="form-control" type="text" required [(ngModel)]="vacancy.budget" name="budget"
-            placeholder="1000" />
-        </div>
-  
-        <div>
-          <label for="currency">Currency</label>
-          <input id="currency" class="form-control" type="text" required [(ngModel)]="vacancy.currency" name="currency"
-            placeholder="PLN" />
-        </div>
+  <div>
+    <div *ngIf="!submitted">
+      <legend><span class="number">1</span>Vacancy Info</legend>
+      <div>
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" required [(ngModel)]="vacancy.title" name="title"
+          placeholder="Java Developer" />
+      </div>
 
-        <div>
-            <label for="budgetType">Type</label>
-            <input id="budgetType" class="form-control" type="text" required [(ngModel)]="vacancy.budgetType" name="budgetType"
-              placeholder="per day"/>
-        </div>
+      <div>
+        <label for="budget">Maximum budget</label>
+        <input id="budget" class="form-control" type="text" required [(ngModel)]="vacancy.budget" name="budget"
+          placeholder="1000" />
+      </div>
 
-        <div>
-            <label for="contractType">Contract type</label>
-            <input id="contractType" class="form-control" type="text" required [(ngModel)]="vacancy.contractType" name="contractType"
-              placeholder="Contracting"/>
-        </div>
+      <div>
+        <label for="currency">Currency</label>
+        <select required [(ngModel)]="vacancy.currency">
+          <option disabled selected>Currency</option>
+          <option name="currency" id="currency" class="form-control" *ngFor="let item of valuesCurrency()"
+            ngDefaultControl> {{ item }}
+          </option>
+        </select>
+      </div>
 
-        <div>
-            <label for="skillTags">Requirements</label>
-            <input id="skillTags" class="form-control" type="text" required [(ngModel)]="vacancy.skillTags" name="skillTags"
-              placeholder="Java 8, Spring Boot, MySQL"/>
-        </div>
-  
-        <legend><span class="number">2</span>Additional information</legend>
-        
-        <div>
-          <label for="budgetType">Description/Comments</label>
+      <div>
+        <label for="budgetType">Type of salary</label>
+        <select required [(ngModel)]="vacancy.budgetType">
+          <option disabled selected>budgetType</option>
+          <option name="budgetType" id="budgetType" class="form-control" *ngFor="let item of valuesBudgetType()"
+            ngDefaultControl> {{ item }}
+          </option>
+        </select>
+      </div>
+
+
+      <div>
+        <label for="contractType">Contract Type</label>
+        <select required [(ngModel)]="vacancy.contractType">
+          <option disabled selected>contractType</option>
+          <option name="contractType" id="contractType" class="form-control" *ngFor="let item of valuesContractType()"
+            ngDefaultControl> {{ item }}
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label for="skillTags">Requirements</label>
+        <input id="skillTags" class="form-control" type="text" required [(ngModel)]="vacancy.skillTags" name="skillTags"
+          placeholder="Java 8, Spring Boot, MySQL" />
+      </div>
+
+      <legend><span class="number">2</span>Additional information</legend>
+
+      <div>
+        <label for="budgetType">Description/Comments</label>
         <input id="description" class="form-control" type="text" required [(ngModel)]="vacancy.description"
           name="description" placeholder="only developers with 3+ years of experience" />
       </div>
 
-        <div>
-            <label for="budgetType">Contact on client's side</label>
-          <input id="contact" class="form-control" type="text" required [(ngModel)]="vacancy.contact"
-            name="contact" placeholder="Anna Kowalska" />
-        </div>
-    
-  
-        <button type="submit" class="buttom" (click)="saveVacancy()">Submit</button>
+      <div>
+        <label for="budgetType">Contact on client's side</label>
+        <input id="contact" class="form-control" type="text" required [(ngModel)]="vacancy.contact" name="contact"
+          placeholder="Anna Kowalska" />
       </div>
-  
-      <div *ngIf="submitted">
-        <h4>Contact was submitted successfully!</h4>
-        <button type="submit" (click)="newVacancy()">Add</button>
-      </div>
+
+
+      <button type="submit" class="buttom" (click)="saveVacancy()">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Contact was submitted successfully!</h4>
+      <button type="submit" (click)="newVacancy()">Add</button>
     </div>
   </div>
-
+</div>

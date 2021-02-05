@@ -52,6 +52,7 @@ export class ClientDetailsComponent implements OnInit {
     this.clientService.update(this.currentClient.id, this.currentClient)
       .subscribe(response => {
         console.log(response);
+        this.router.navigate(['/clients']);
         this.message = response.message;
       },
         error => {

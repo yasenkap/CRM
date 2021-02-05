@@ -4,17 +4,19 @@ export class Client {
         name?: string;
         description?: string;
         website?: string;
-        city?: string;
+        city?: City;
     
 }
 
 export enum City {
-        WARSAW,
-        CRACOW,
-        POZNAN,
-        KATOWICE,
-        GDYNYA,
-        GDANSK,
-        LODZ,
-        WROCLAW
+        Warsaw = "WARSAW",
+        Cracow = "CRACOW",
+        Poznan = "POZNAN",
+        Katowice = "KATOWICE",
+        Gdynia = "GDYNYA",
+        Gdansk ="GDANSK",
+        LODZ = "LODZ" ,
+        WROCLAW ="WROCLAW"
     }
+
+

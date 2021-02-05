@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Vacancy } from 'src/app/models/vacancy.model';
+import { BudgetType, ContractType, Currency, Vacancy } from 'src/app/models/vacancy.model';
 import { VacancyService } from 'src/app/services/vacancy.service';
 
 @Component({
@@ -24,7 +24,23 @@ export class AddVacancyComponent implements OnInit {
 
   };
 
+  budgetType = BudgetType;
+  currency = Currency;
+  contractType = ContractType;
+
   submitted = false;
+
+  valuesBudgetType(): Array<string> {
+    return Object.values(this.budgetType);
+  }
+
+  valuesCurrency(): Array<string> {
+    return Object.values(this.currency);
+  }
+
+  valuesContractType(): Array<string> {
+    return Object.values(this.contractType);
+  }
 
   constructor(private router: Router, private vacancyService: VacancyService) { }
 

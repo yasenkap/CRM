@@ -8,6 +8,10 @@ ul li {
   text-transform: capitalize;
 }
 
+ul li:hover {
+  color: #1abc9c;
+}
+
 ul li:before {
   content: counter(item);
   display: inline-block;
@@ -27,6 +31,10 @@ ul li:before {
 
 
   .form-style-5{
+    position: absolute;
+    top: 270px;
+    left: 300px;
+    width: 800px;
     max-width: 500px;
     padding: 10px 20px;
     background: #f4f7f8;

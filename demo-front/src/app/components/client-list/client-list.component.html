@@ -24,23 +24,23 @@
 
   <div class="form-style-5">
     <div *ngIf="currentClient">
-      <h4>Client</h4>
+      <h4>Client Details</h4>
       <div>
-        <label><strong>Name:</strong></label> {{ currentClient.name}}
+        <label><strong>Name:</strong> {{ currentClient.name}} </label> 
       </div>
       <div>
-        <label><strong>Website:</strong></label>
-        {{ currentClient.website }}
+        <label><strong>Website:</strong> {{ currentClient.website }}</label>
+      
       </div>
       <div>
         <div>
-          <label><strong>City:</strong></label>
-          {{ currentClient.city }}
+          <label><strong>City:</strong> {{ currentClient.city }}</label>
+          
         </div>
         <div>
 
-          <label><strong>Description:</strong></label>
-          {{ currentClient.description }}
+          <label><strong>Description:</strong> {{ currentClient.description }}</label>
+          
         </div>
 
         <a routerLink="/clients/{{ currentClient.id }}">

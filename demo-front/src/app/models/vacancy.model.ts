@@ -17,20 +17,20 @@ export class Vacancy {
 }
 
 export enum Currency {
-    PLN,
-    GBP,
-    USD
+    PLN = "PLN",
+    GBP = "GBP",
+    USD = "USD"
 }
 
 export enum BudgetType {
-    HOUR = 'rate per hour',
-    DAY = 'rate per day',
-    MONTH = 'rate per month'
+    PER_HOUR = "PER_HOUR",
+    PER_DAY = "PER_DAY",
+    PER_MONTH = "PER_MONTH"
 }
 
 export enum ContractType {
-    PERM,
-    CONTRACTING
+    PERM = "PERM",
+    CONTRACTING = "CONTRACTING"
 }
 
 export enum Status {

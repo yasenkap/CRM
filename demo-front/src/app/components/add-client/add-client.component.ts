@@ -19,6 +19,7 @@ export class AddClientComponent implements OnInit {
     website: '',
     city: undefined,
   };
+  
   submitted = false;
 
   city = City;
