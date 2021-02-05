@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface VacancyRepository extends JpaRepository<Vacancy, Long> {
 
-    @Query("select v from Vacancy v where v.client.name = :clientName")
+    @Query("select v from Vacancy v where v.client.name like %:clientName%")
     List<Vacancy> findByClientName(@Param("clientName") String clientName);
 
     @Query("select v from Vacancy v join v.candidates c where c.id  = :candidateId")

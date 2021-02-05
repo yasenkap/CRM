@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    @Query("select c from Client c where c.name like :name")
+    @Query("select c from Client c where c.name like %:name%")
     List<Client> findByNameContaining(@Param("name") String name);
 
 }

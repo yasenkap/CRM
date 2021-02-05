@@ -13,7 +13,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     @Query("select c from Candidate c join c.vacancies v where v.id = : vacancyId ")
     List<Candidate> findCandidatesByVacancyId(@Param("vacancyId") Long vacancyId);
 
-    @Query("select c from Candidate c where c.surname like :surname")
+    @Query("select c from Candidate c where c.surname like %:surname%")
     List<Candidate> findBySurnameLike(@Param("surname") String surname);
 
 }
