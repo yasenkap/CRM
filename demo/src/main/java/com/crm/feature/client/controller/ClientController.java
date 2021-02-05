@@ -5,6 +5,7 @@ import com.crm.feature.client.model.ClientDTO;
 import com.crm.feature.client.model.ClientMapper;
 import com.crm.feature.client.service.ClientService;
 import com.crm.feature.contact.model.Contact;
+import com.crm.feature.contact.model.ContactDTO;
 import com.crm.feature.contact.model.ContactMapper;
 import com.crm.feature.contact.service.ContactService;
 import com.crm.feature.vacancy.model.Vacancy;
@@ -28,6 +29,7 @@ public class ClientController {
     private ContactService contactService;
     @Autowired
     private ClientMapper clientMapper;
+    private ContactMapper contactMapper;
 
     @CrossOrigin(origins = "http://localhost:8081")
     @GetMapping
@@ -52,11 +54,11 @@ public class ClientController {
     }
 
     @GetMapping("/{id}/contacts")
-    List<Contact> getContactsByClient(@PathVariable("id") Long id) {
+    List<ContactDTO> getContactsByClient(@PathVariable("id") Long id) {
         Client selectedClient = clientService.getById(id);
         List<Contact> contacts = new ArrayList<>();
         contactService.getContactByNameOfClient(selectedClient.getName()).forEach(contacts::add);
-        return contacts;
+        return contactMapper.toContactDTOs(contacts);
     }
 
 
@@ -80,10 +82,11 @@ public class ClientController {
         return clientService.updateClient(id, client);
     }
 
-    public ClientController(ClientService clientService, VacancyService vacancyService, ContactService contactService, ClientMapper clientMapper) {
+    public ClientController(ClientService clientService, VacancyService vacancyService, ContactService contactService, ClientMapper clientMapper, ContactMapper contactMapper) {
         this.clientService = clientService;
         this.vacancyService = vacancyService;
         this.contactService = contactService;
         this.clientMapper = clientMapper;
+        this.contactMapper = contactMapper;
     }
 }

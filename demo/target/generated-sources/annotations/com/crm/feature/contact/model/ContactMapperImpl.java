@@ -2,14 +2,15 @@ package com.crm.feature.contact.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
+/*
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-02-05T00:14:16+0100",
+    date = "2021-02-05T00:54:10+0100",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.9 (Oracle Corporation)"
 )
+*/
 @Component
 public class ContactMapperImpl implements ContactMapper {
 
@@ -24,14 +25,16 @@ public class ContactMapperImpl implements ContactMapper {
         String position = null;
         String email = null;
         String phoneNumber = null;
+        Long id = null;
 
         name = contact.getName();
         surname = contact.getSurname();
         position = contact.getPosition();
         email = contact.getEmail();
         phoneNumber = contact.getPhoneNumber();
+        id = contact.getId();
 
-        ContactDTO contactDTO = new ContactDTO( name, surname, position, email, phoneNumber );
+        ContactDTO contactDTO = new ContactDTO( id, name, surname, position, email, phoneNumber );
 
         return contactDTO;
     }
@@ -58,6 +61,7 @@ public class ContactMapperImpl implements ContactMapper {
 
         Contact contact = new Contact();
 
+        contact.setId( contactDTO.getId() );
         contact.setName( contactDTO.getName() );
         contact.setSurname( contactDTO.getSurname() );
         contact.setEmail( contactDTO.getEmail() );

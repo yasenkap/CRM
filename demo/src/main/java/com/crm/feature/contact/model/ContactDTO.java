@@ -1,14 +1,15 @@
 package com.crm.feature.contact.model;
 
 public class ContactDTO {
-
+    private Long id;
     private String name;
     private String surname;
     private String position;
     private String email;
     private String phoneNumber;
 
-    public ContactDTO(String name, String surname, String position, String email, String phoneNumber) {
+    public ContactDTO(Long id, String name, String surname, String position, String email, String phoneNumber) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.position = position;
@@ -54,5 +55,13 @@ public class ContactDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
