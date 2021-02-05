@@ -1,42 +1,46 @@
+<meta charset="UTF-8" />
 <div class="form-style-5">
-  <div>
-    <div *ngIf="!submitted">
-      <legend><span class="number">1</span>Client Info</legend>
-      <div>
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required [(ngModel)]="client.name" name="name"
-          placeholder="BestCompanyEver" />
+  <form ngNativeValidate>
+    <div>
+      <div *ngIf="!submitted">
+        <legend><span class="number">1</span>Client Info</legend>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="client.name" name="name"
+            placeholder="BestCompanyEver" required />
+        </div>
+
+        <div>
+          <label for="website">Website</label>
+          <input id="website" class="form-control" type="text" required [(ngModel)]="client.website" name="website"
+            placeholder="www.BestCompanyEver.com" />
+        </div>
+
+        <div>
+          <label for="city">City</label>
+          <select required [(ngModel)]="client.city">
+            <option disabled selected>City</option>
+            <option name="city" id="city" class="form-control" *ngFor="let item of values()" ngDefaultControl> {{ item
+              }}
+            </option>
+          </select>
+        </div>
+
+        <legend><span class="number">2</span> Additional Info</legend>
+        <div>
+          <label for="description">Description</label>
+          <input id="description" class="form-control" type="text" required [(ngModel)]="client.description"
+            name="description" placeholder="Dream company to work for" />
+        </div>
+
+        <button type="submit" class="buttom" (click)="saveClient()">Submit</button>
       </div>
-
-
-      <div>
-        <label for="website">Website</label>
-        <input id="website" class="form-control" type="text" required [(ngModel)]="client.website" name="website"
-          placeholder="www.BestCompanyEver.com" />
-      </div>
-
-      <div>
-        <label for="city">City</label>
-        <select required [(ngModel)]="client.city">
-          <option disabled selected>City</option>
-          <option name="city" id="city" class="form-control" *ngFor="let item of values()" ngDefaultControl> {{ item }}
-          </option>
-        </select>
-      </div>
-
-      <legend><span class="number">2</span> Additional Info</legend>
-      <div>
-        <label for="description">Description</label>
-        <input id="description" class="form-control" type="text" required [(ngModel)]="client.description"
-          name="description" placeholder="Dream company to work for" />
-      </div>
-
-      <button type="submit" class="buttom" (click)="saveClient()">Submit</button>
     </div>
+  </form>
 
-    <div *ngIf="submitted">
-      <h4>Client was submitted successfully!</h4>
-      <button type="submit" (click)="newClient()">Add</button>
-    </div>
+
+  <div *ngIf="submitted">
+    <h4>Client was submitted successfully!</h4>
+    <button type="submit" (click)="newClient()">Add</button>
   </div>
 </div>

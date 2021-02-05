@@ -43,6 +43,15 @@
           
         </div>
 
+        <div>
+          <label><strong>Contacts:</strong></label>
+          <ul class="list-group">
+          <li class="list-group-item" *ngFor="let contact of contacts">
+              {{ contact.name }} {{ contact.surname }}
+           </li>
+           </ul>
+          </div>
+
         <a routerLink="/clients/{{ currentClient.id }}">
           Edit
         </a>

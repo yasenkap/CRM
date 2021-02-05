@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Contact } from '../models/contact.model';
 import { Observable } from 'rxjs';
+import { Client } from '../models/client.model';
 
 const baseUrl = 'http://localhost:8080/contacts';
 const httpOptions = {
@@ -37,6 +38,10 @@ export class ContactService {
 
   findByClientName(clientName: any): Observable<Contact[]> {
     return this.http.get<Contact[]>(`${baseUrl}?clientName=${clientName}`);
+  }
+
+  getClientByContactId(id: any): Observable<Client> {
+    return this.http.get(`${baseUrl}/${id}/client`);
   }
 
 }
