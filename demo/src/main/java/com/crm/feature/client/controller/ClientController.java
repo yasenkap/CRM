@@ -9,6 +9,8 @@ import com.crm.feature.contact.model.ContactDTO;
 import com.crm.feature.contact.model.ContactMapper;
 import com.crm.feature.contact.service.ContactService;
 import com.crm.feature.vacancy.model.Vacancy;
+import com.crm.feature.vacancy.model.VacancyDTO;
+import com.crm.feature.vacancy.model.VacancyMapper;
 import com.crm.feature.vacancy.service.VacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +31,10 @@ public class ClientController {
     private ContactService contactService;
     @Autowired
     private ClientMapper clientMapper;
+    @Autowired
     private ContactMapper contactMapper;
+    @Autowired
+    private VacancyMapper vacancyMapper;
 
     @CrossOrigin(origins = "http://localhost:8081")
     @GetMapping
@@ -46,11 +51,11 @@ public class ClientController {
     }
 
     @GetMapping("/{id}/vacancies")
-    List<Vacancy> getVacanciesByClient(@PathVariable("id") Long id) {
+    List<VacancyDTO> getVacanciesByClient(@PathVariable("id") Long id) {
         Client selectedClient = clientService.getById(id);
         List<Vacancy> vacancies = new ArrayList<>();
         vacancyService.getVacanciesByNameOfClient(selectedClient.getName()).forEach(vacancies::add);
-        return vacancies;
+        return vacancyMapper.toVacancyDTOs(vacancies);
     }
 
     @GetMapping("/{id}/contacts")
@@ -82,11 +87,12 @@ public class ClientController {
         return clientService.updateClient(id, client);
     }
 
-    public ClientController(ClientService clientService, VacancyService vacancyService, ContactService contactService, ClientMapper clientMapper, ContactMapper contactMapper) {
+    public ClientController(ClientService clientService, VacancyService vacancyService, ContactService contactService, ClientMapper clientMapper, ContactMapper contactMapper, VacancyMapper vacancyMapper) {
         this.clientService = clientService;
         this.vacancyService = vacancyService;
         this.contactService = contactService;
         this.clientMapper = clientMapper;
         this.contactMapper = contactMapper;
+        this.vacancyMapper = vacancyMapper;
     }
 }

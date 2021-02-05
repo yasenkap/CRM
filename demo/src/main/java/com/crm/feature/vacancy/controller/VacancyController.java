@@ -1,6 +1,8 @@
 package com.crm.feature.vacancy.controller;
 
 import com.crm.feature.candidate.model.Candidate;
+import com.crm.feature.candidate.model.CandidateDTO;
+import com.crm.feature.candidate.model.CandidateMapper;
 import com.crm.feature.candidate.service.CandidateService;
 import com.crm.feature.contact.model.Contact;
 import com.crm.feature.vacancy.model.Vacancy;
@@ -24,6 +26,8 @@ public class VacancyController {
     private CandidateService candidateService;
     @Autowired
     private VacancyMapper vacancyMapper;
+    @Autowired
+    private CandidateMapper candidateMapper;
 
     @GetMapping
     List<VacancyDTO> getAll(@RequestParam(required = false) String clientName) {
@@ -38,10 +42,10 @@ public class VacancyController {
     }
 
     @GetMapping("/{id}/candidates")
-    List<Candidate> getCandidatesByVacancyId(@PathVariable Long id) {
+    List<CandidateDTO> getCandidatesByVacancyId(@PathVariable Long id) {
         List<Candidate> candidates = new ArrayList<>();
         candidateService.getCandidatesByVacancyId(id).forEach(candidates::add);
-        return candidates;
+        return candidateMapper.toCandidateDTOs(candidates);
     }
 
     @GetMapping("/{id}")
@@ -72,9 +76,10 @@ public class VacancyController {
         return candidateService;
     }
 
-    public VacancyController(VacancyService vacancyService, CandidateService candidateService, VacancyMapper vacancyMapper) {
+    public VacancyController(VacancyService vacancyService, CandidateService candidateService, VacancyMapper vacancyMapper, CandidateMapper candidateMapper) {
         this.vacancyService = vacancyService;
         this.candidateService = candidateService;
         this.vacancyMapper = vacancyMapper;
+        this.candidateMapper = candidateMapper;
     }
 }
