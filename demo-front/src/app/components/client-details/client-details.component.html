@@ -24,16 +24,12 @@
             />
           </div>
 
-          <div>
-            <label for="description">City</label>
-            <input
-              type="text"
-              class="form-control"
-              id="city"
-              [(ngModel)]="currentClient.city"
-              name="city"
-            />
-          </div>
+        <div>
+          <select [(ngModel)]="currentClient.city" [ngModelOptions]="{standalone: true}">
+            <option selected="currentClient.city">City</option>
+            <option name="city" id="city"  class="form-control"  *ngFor="let item of values()" > {{ item }}</option>
+          </select>
+        </div>
 
         <div>
           <label for="description">Description</label>

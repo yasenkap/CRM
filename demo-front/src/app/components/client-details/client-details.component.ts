@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Client } from 'src/app/models/client.model';
+import { City, Client } from 'src/app/models/client.model';
 import { ClientService } from 'src/app/services/client.service';
 
 @Component({
@@ -16,6 +16,12 @@ export class ClientDetailsComponent implements OnInit {
     website: '',
     city: undefined
   };
+
+  city = City;
+  
+    values() : Array<string> {
+      return Object.values(this.city);
+   }
 
   message = '';
 
