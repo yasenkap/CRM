@@ -29,6 +29,10 @@ ul li:before {
   
 }
 
+.form-control {
+  width: 270px;
+  height: 30px;
+}
 
   .form-style-5{
     position: absolute;

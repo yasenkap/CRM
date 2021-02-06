@@ -12,9 +12,10 @@ import { CandidateDetailsComponent } from './components/candidate-details/candid
 import { CandidateListComponent } from './components/candidate-list/candidate-list.component';
 import { VacancyDetailsComponent } from './components/vacancy-details/vacancy-details.component';
 import { VacancyListComponent } from './components/vacancy-list/vacancy-list.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'clients', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   { path: 'clients', component: ClientListComponent },
   { path: 'clients/:id', component: ClientDetailsComponent },
   { path: 'addClient', component: AddClientComponent },

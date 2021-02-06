@@ -150,6 +150,11 @@ ul li:before {
     box-shadow: 0 0 10px rgb(56,100,38);
     transition: all 1s;
   }
+
+  .form-control {
+    width: 270px;
+    height: 30px;
+  }
   
   button:hover {
     box-shadow: 0 0 25px rgb(56,100,38);

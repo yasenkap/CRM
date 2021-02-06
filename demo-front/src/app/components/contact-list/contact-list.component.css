@@ -135,6 +135,11 @@ ul li:before {
   {
     background: #109177;
   }
+
+  .form-control {
+    width: 270px;
+    height: 30px;
+  }
   
   button {
     cursor: pointer;
