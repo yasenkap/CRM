@@ -1,52 +1,52 @@
 <div class="form-style-5">
-    <div>
-      <div *ngIf="!submitted">
-        <legend><span class="number">1</span>Contact Info</legend>
-        <div>
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" required [(ngModel)]="contact.name" name="name"
-            placeholder="Yara" />
-        </div>
-  
-        <div>
-          <label for="surname">Surname</label>
-          <input id="surname" class="form-control" type="text" required [(ngModel)]="contact.surname" name="surname"
-            placeholder="Pyrozhko" />
-        </div>
-  
-        <div>
-          <label for="position">Position</label>
-          <input id="position" class="form-control" type="text" required [(ngModel)]="contact.position" name="position"
-            placeholder="Recruiter" />
-        </div>
+  <div>
+    <div *ngIf="!submitted">
+      <legend><span class="number">1</span>Contact Info</legend>
+      <div>
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="contact.name" name="name"
+          placeholder="Yara" />
+      </div>
 
-        <div>
-            <label for="email">Email</label>
-            <input id="email" class="form-control" type="text" required [(ngModel)]="contact.email" name="email"
-              placeholder="yara.pyrozhko@email.com"/>
-        </div>
+      <div>
+        <label for="surname">Surname</label>
+        <input id="surname" class="form-control" type="text" required [(ngModel)]="contact.surname" name="surname"
+          placeholder="Pyrozhko" />
+      </div>
 
-        <div>
-            <label for="phoneNumber">Phone number</label>
-            <input id="phoneNumber" class="form-control" type="text" required [(ngModel)]="contact.phoneNumber" name="phoneNumber"
-              placeholder="+48 555 555 555"/>
-        </div>
-  
-        <legend><span class="number">2</span>Company</legend>
+      <div>
+        <label for="position">Position</label>
+        <input id="position" class="form-control" type="text" required [(ngModel)]="contact.position" name="position"
+          placeholder="Recruiter" />
+      </div>
 
-        <div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" class="form-control" type="text" required [(ngModel)]="contact.email" name="email"
+          placeholder="yara.pyrozhko@email.com" />
+      </div>
+
+      <div>
+        <label for="phoneNumber">Phone number</label>
+        <input id="phoneNumber" class="form-control" type="text" required [(ngModel)]="contact.phoneNumber"
+          name="phoneNumber" placeholder="+48 555 555 555" />
+      </div>
+
+      <legend><span class="number">2</span>Company</legend>
+
+      <div>
         <label for="client">Company name</label>
         <select [(ngModel)]="selectedName">
           <option *ngFor="let client of clients">{{client.name}}</option>
         </select>
       </div>
-  
-        <button type="submit" class="buttom" (click)="saveContact()">Submit</button>
-      </div>
-  
-      <div *ngIf="submitted">
-        <h4>Contact was submitted successfully!</h4>
-        <button type="submit" (click)="newContact()">Add</button>
-      </div>
+
+      <button type="submit" class="buttom" (click)="saveContact()">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Contact was submitted successfully!</h4>
+      <button type="submit" (click)="newContact()">Add</button>
     </div>
   </div>
+</div>

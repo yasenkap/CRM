@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Client } from 'src/app/models/client.model';
 import { BudgetType, ContractType, Currency, Vacancy } from 'src/app/models/vacancy.model';
+import { ClientService } from 'src/app/services/client.service';
 import { VacancyService } from 'src/app/services/vacancy.service';
 
 @Component({
@@ -28,6 +30,10 @@ export class AddVacancyComponent implements OnInit {
   currency = Currency;
   contractType = ContractType;
 
+  clients: Client[];
+
+  selectedName: string;
+
   submitted = false;
 
   valuesBudgetType(): Array<string> {
@@ -42,12 +48,32 @@ export class AddVacancyComponent implements OnInit {
     return Object.values(this.contractType);
   }
 
-  constructor(private router: Router, private vacancyService: VacancyService) { }
+  constructor(private router: Router, private vacancyService: VacancyService, private clientService: ClientService) { 
+    this.clients = [];
+    this.selectedName = '';
+  }
 
   ngOnInit(): void {
+    this.retrieveClients();
+  }
+
+  retrieveClients(): void {
+    this.clientService.getAll().subscribe(
+      data => {
+        this.clients = data;
+        console.log(data)
+      },
+      error => {
+        console.log(error);
+      })
   }
 
   saveVacancy(): void {
+
+    const selectedClient = this.clients.find((client) => { 
+      return client.name === this.selectedName;
+    })
+
     const data = {
 
       title: this.vacancy.title,
@@ -57,7 +83,7 @@ export class AddVacancyComponent implements OnInit {
       contractType: this.vacancy.contractType,
       description: this.vacancy.description,
       contact: this.vacancy.contact,
-      client: this.vacancy.client,
+      client: selectedClient,
       status: this.vacancy.status,
       skillTags: this.vacancy.skillTags
     };

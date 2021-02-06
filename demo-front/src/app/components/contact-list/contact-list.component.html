@@ -17,7 +17,7 @@
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let contact of contacts; let i = index"
                 [class.active]="i == currentIndex" (click)="setActiveContact(contact, i)">
-                {{ contact.name }} &nbsp; {{ contact.surname }} &nbsp;
+                {{ contact.name }} {{ contact.surname }} &nbsp;
             </li>
         </ul>
 

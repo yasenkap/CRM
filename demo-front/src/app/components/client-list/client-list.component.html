@@ -26,31 +26,39 @@
     <div *ngIf="currentClient">
       <h4>Client Details</h4>
       <div>
-        <label><strong>Name:</strong> {{ currentClient.name}} </label> 
+        <label><strong>Name:</strong> {{ currentClient.name}} </label>
       </div>
       <div>
         <label><strong>Website:</strong> {{ currentClient.website }}</label>
-      
+
       </div>
       <div>
         <div>
           <label><strong>City:</strong> {{ currentClient.city }}</label>
-          
+
         </div>
         <div>
 
           <label><strong>Description:</strong> {{ currentClient.description }}</label>
-          
+
         </div>
 
         <div>
           <label><strong>Contacts:</strong></label>
           <ul class="list-group">
-          <li class="list-group-item" *ngFor="let contact of contacts">
+            <li class="list-group-item" *ngFor="let contact of contacts">
               {{ contact.name }} {{ contact.surname }}
-           </li>
-           </ul>
-          </div>
+            </li>
+          </ul>
+        </div>
+
+          <label><strong>Vacancies:</strong></label>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let vacancy of vacancies">
+              {{ vacancy.title }}
+            </li>
+          </ul>
+        
 
         <a routerLink="/clients/{{ currentClient.id }}">
           Edit

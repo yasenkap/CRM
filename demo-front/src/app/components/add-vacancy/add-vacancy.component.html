@@ -60,9 +60,10 @@
       </div>
 
       <div>
-        <label for="budgetType">Contact on client's side</label>
-        <input id="contact" class="form-control" type="text" required [(ngModel)]="vacancy.contact" name="contact"
-          placeholder="Anna Kowalska" />
+        <label for="client">Company name</label>
+        <select [(ngModel)]="selectedName">
+          <option *ngFor="let client of clients">{{client.name}}</option>
+        </select>
       </div>
 
 
