@@ -14,7 +14,7 @@ public class Client {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @Column
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private City city;
     @Column(nullable = false)

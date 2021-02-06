@@ -47,8 +47,7 @@ public class VacancyService {
             updatedVacancy.setContractType(vacancy.getContractType());
             updatedVacancy.setCurrency(vacancy.getCurrency());
             updatedVacancy.setSkillTags(vacancy.getSkillTags());
-            updatedVacancy.setContact(vacancy.getContact());
-            updatedVacancy.setContact(vacancy.getContact());
+            updatedVacancy.setClient(vacancy.getClient());
             updatedVacancy = vacancyRepository.save(updatedVacancy);
         }
         return updatedVacancy;

@@ -24,6 +24,10 @@ public class ClientService {
         return clientRepository.findById(id).orElseThrow();
     }
 
+    public Client getByContactId(Long id) {
+        return clientRepository.getByContactId(id);
+    }
+
     public void delete(Long id) {
         clientRepository.deleteById(id);
     }
@@ -42,6 +46,8 @@ public class ClientService {
             updatedClient.setCity(client.getCity());
             updatedClient.setDescription(client.getDescription());
             updatedClient.setWebsite(client.getWebsite());
+            updatedClient.setContacts(client.getContacts());
+            updatedClient.setVacancies(client.getVacancies());
             updatedClient = clientRepository.save(updatedClient);
         }
         return updatedClient;
